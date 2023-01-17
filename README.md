@@ -3,6 +3,7 @@
 # APIs
 
 [MediaStack](https://mediastack.com/) - To programmatically retrieve news data.
+
 [OpenAI](https://openai.com/api/) - To generate digestible summaries of the latest news in artificial intelligence and machine learning.
 
 # Schema
