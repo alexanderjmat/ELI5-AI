@@ -1,2 +1,4 @@
 /docs
+/back-end/config.js
+/back-end/.env
 .env
