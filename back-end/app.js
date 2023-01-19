@@ -1,17 +1,40 @@
 const express = require("express");
 const axios = require("axios");
 const app = express();
+const jwt = require("jsonwebtoken")
 const cors = require("cors");
 const pg = require("pg")
+const { SECRET_KEY } = require("./config")
+
+
+
+app.use(express.json());
 
 const OPEN_API_KEY = process.env.OPENAI_API_KEY;
 const MEDIASTACK_API_KEY = process.env.MEDIASTACK_API_KEY;
+
+const SECRET_KEY = process.env.SECRET_KEY || "testkey";
+
+function authenticate(req, res, next) {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).send("Access denied. No token provided.");
+  }
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY);
+    req.user = decoded;
+    next();
+  } catch (e) {
+    res.status(400).send("Unauthorized.");
+  }
+}
 
 app.get("/", (req, res) => {
   res.send("ELI5-AI server running");
 });
 
-app.post("/admin", (req, res) => {
+app.get("/admin", authenticate, (req, res) => {
+  res.send('Admin portal home page')
 
 })
 
