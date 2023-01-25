@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db");
-const Client = require("../models/user")
+const Client = require("../models/user");
 
 router.get("/", (req, res) => {
   return res.json({
@@ -12,13 +11,12 @@ router.get("/", (req, res) => {
 router.get("/newsletters", async (req, res) => {
   const newsletters = await Client.getNewsletters();
   return res.json({
-    newsletters: newsletters
-  })
-
-})
+    newsletters: newsletters,
+  });
+});
 
 router.get("/newsletter", async (req, res) => {
-  const newsletter = await Client.getCurrentNewsletter()
+  const newsletter = await Client.getCurrentNewsletter();
   return res.json({ newsletter });
 });
 

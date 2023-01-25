@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db");
 const Admin = require("../models/admin");
 const {
   authenticate,
@@ -8,7 +7,6 @@ const {
   ensureAdminPost,
   logout,
 } = require("../middleware/auth");
-const jwt = require("jsonwebtoken");
 
 router.get("/", ensureAdmin, (req, res) => {
   res.send("Admin Panel");
@@ -16,7 +14,7 @@ router.get("/", ensureAdmin, (req, res) => {
 
 router.post("/login", authenticate, (req, res) => {
   res.send({
-    token: req.session.admin_token,
+    token: "valid_token",
   });
 });
 
@@ -58,7 +56,6 @@ router.delete("/newsletter/:id", ensureAdmin, async (req, res) => {
 
 router.patch("/newsletter/:id", ensureAdminPost, async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const publishNewsletter = await Admin.publishNewsletter(id);
   res.json({
     publishNewsletter,

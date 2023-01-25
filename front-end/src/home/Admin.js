@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import MainAPI from "../api/Api";
 import cookie from "react-cookies";
-import axios from "axios";
 
 function Admin(props) {
   const [loginData, setLoginData] = useState({

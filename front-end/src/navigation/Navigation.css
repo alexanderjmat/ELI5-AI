@@ -1,0 +1,7 @@
+.Navigation {
+    display: flex;
+    flex-direction: row;
+    padding: 0 auto;
+    height: 120px;
+    background-color: yellow;
+}
