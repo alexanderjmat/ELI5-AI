@@ -1,38 +1,35 @@
--- Create subscribers table
-
+-- subscribers table
 CREATE TABLE subscribers (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     subscription_status BOOLEAN NOT NULL DEFAULT true
 );
 
--- Create news_article table
-CREATE TABLE news_article (
+-- newsletter_edition table
+CREATE TABLE newsletter (
+    id SERIAL PRIMARY KEY,
+    date_published VARCHAR(11),
+    was_sent BOOLEAN NOT NULL DEFAULT false
+);
+
+-- news_article table
+CREATE TABLE news_articles (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    url VARCHAR(255) NOT NULL,
-    date_published TIMESTAMP NOT NULL
+    url VARCHAR(255) UNIQUE NOT NULL,
+    date_published VARCHAR(11) NOT NULL,
+    newsletter_id INTEGER NOT NULL REFERENCES newsletter,
+    was_sent BOOLEAN NOT NULL DEFAULT FALSE
 );
-
--- Create summaries table
-CREATE TABLE summaries (
-    id SERIAL PRIMARY KEY,
-    news_article_id INTEGER REFERENCES news_article(id),
-    summary TEXT NOT NULL
-);
-
-CREATE TABLE newsletter_edition {
-    id SERIAL PRIMARY KEY,
-    date_published TIMESTAMP,
-    was_sent BOOLEAN NOT NULL DEFAULT dals
-}
 
 -- Create newsletter_entries table
 CREATE TABLE newsletter_entries (
     id SERIAL PRIMARY KEY,
-    article_id INTEGER REFERENCES news_article(id),
-    date_sent TIMESTAMP,
+    news_articles_id INTEGER NOT NULL REFERENCES news_articles,
+    newsletter_id INTEGER NOT NULL REFERENCES newsletter,
+    title TEXT NOT NULL, 
+    article TEXT NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    date_sent VARCHAR(11),
     was_sent BOOLEAN NOT NULL DEFAULT false
 );
-
