@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Admin = require("../models/admin");
+const Email = require("../models/email");
 const {
   authenticate,
   ensureAdmin,
@@ -12,9 +13,10 @@ router.get("/", ensureAdmin, (req, res) => {
   res.send("Admin Panel");
 });
 
+
 router.post("/login", authenticate, (req, res) => {
   res.send({
-    token: "valid_token",
+    token: req.session.admin_token,
   });
 });
 
@@ -24,11 +26,13 @@ router.get("/logout", logout, (req, res) => {
 
 //Newsletter routes
 
+//Get all newsletters
 router.get("/newsletters", ensureAdmin, async (req, res) => {
   const newsletters = await Admin.getNewsletters();
   res.json({ newsletters });
 });
 
+//Get specific newsletter
 router.get("/newsletter/:id", ensureAdmin, async (req, res) => {
   const id = req.params.id;
   const newsletter = await Admin.getNewsletter(id);
@@ -37,6 +41,7 @@ router.get("/newsletter/:id", ensureAdmin, async (req, res) => {
   });
 });
 
+//Create newsletter
 router.post("/newsletter", ensureAdminPost, async (req, res) => {
   const newsData = await Admin.fetchNewsData();
   const newsletter = await Admin.generateNewsletter();
@@ -46,20 +51,47 @@ router.post("/newsletter", ensureAdminPost, async (req, res) => {
   });
 });
 
+//Delete newsletter
 router.delete("/newsletter/:id", ensureAdmin, async (req, res) => {
   const id = req.params.id;
   const deleteNewsletter = await Admin.deleteNewsletter(id);
+  console.log("router:", deleteNewsletter)
   return res.json({
     message: "newsletter deleted",
   });
 });
 
+//Publish newsletter to the public
 router.patch("/newsletter/:id", ensureAdminPost, async (req, res) => {
   const id = req.params.id;
   const publishNewsletter = await Admin.publishNewsletter(id);
   res.json({
     publishNewsletter,
   });
+});
+
+//Email routes
+
+//Create account
+router.get("/send_mail", async (req, res) => {
+  const sendEmail = await Email.sendEmail();
+  res.json({
+    sendEmail
+  })
+})
+
+//Send email
+router.post("/email", ensureAdmin, async (req, res) => {
+  const sendEmail = await Email.testEmail();
+  res.json({
+    sendEmail,
+  });
+});
+
+//Get list of subscribers
+router.get("/subscribers", ensureAdmin, async (req, res) => {
+  const subscribers = await Admin.getSubscribers();
+  res.json({ subscribers });
 });
 
 module.exports = router;

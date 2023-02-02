@@ -1,0 +1,15 @@
+.Disclaimer__content {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 100vh;
+    margin: 2em auto;
+}
+.Disclaimer__content h1 {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.Disclaimer__content a {
+    text-decoration: underline;
+}

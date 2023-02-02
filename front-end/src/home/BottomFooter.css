@@ -1,0 +1,25 @@
+.BottomFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    height: 64px;
+}
+
+.BottomFooter__1 p {
+    font-size: 16px;
+    font-family: serif;
+    margin-top: 16px;
+    margin-left: 1em;
+
+}
+
+.BottomFooter__2 a {
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    font-family: serif;
+    margin-right: 2em;
+    padding-top: 16px;
+}

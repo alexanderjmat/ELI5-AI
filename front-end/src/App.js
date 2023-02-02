@@ -17,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Routes states={{currentNewsletter}} />
-    </div>
+      <div className="App">
+        <Routes states={{ currentNewsletter }} />
+      </div>
   );
 }
 

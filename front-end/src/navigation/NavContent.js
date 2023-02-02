@@ -3,32 +3,27 @@ import { ThemeProvider, Container, Row, Col } from "react-bootstrap";
 
 function NavContent() {
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
-      <div className="NavContent">
-        <Container fluid>
-          <Row>
-            <Col md={8}>
-              <h1 className="mt-4">
-                <a href="/">ELI5-AI</a>
-              </h1>
-            </Col>
-            <Col md={2}>
-              <h1 className="mt-4">
-                <a href="/">FAQ</a>
-              </h1>
-            </Col>
-            <Col md={2}>
-              <h1 className="mt-4">
-                <a href="/">DONATE</a>
-              </h1>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </ThemeProvider>
+    <div className="NavContent d-flex justify-content-between align-items-center">
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="NavContent__ELI5-AI mt-2">
+              <a href="/">ELI5-AI</a>
+            </h1>
+          </Col>
+          <Col>
+            <h1 className="NavContent__FAQ mt-2">
+              <a href="/about">ABOUT</a>
+            </h1>
+          </Col>
+          <Col>
+            <h1 className="NavContent__DONATE mt-2">
+              <a href="https://paypal.me/AlexanderMatula?country.x=US&locale.x=en_US">DONATE</a>
+            </h1>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

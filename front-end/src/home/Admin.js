@@ -9,7 +9,7 @@ function Admin(props) {
   });
   const [newsletters, setNewsletters] = useState([]);
   const [selectedNewsletter, setSelectedNewsletter] = useState("");
-  const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   const templates = {
     login: (
@@ -37,12 +37,15 @@ function Admin(props) {
           <label>Create Newsletter</label>
           <button onClick={createNewsletter}>Submit</button>
           <label>Select Newsletter:</label>
-          <select onClick={handleNewsletter}>
+          <select value={selectedNewsletter} onChange={handleNewsletter}>
             {newsletters.map((newsletter) => (
               <option value={newsletter.id}>{newsletter.date_published}</option>
             ))}
           </select>
-          <button onClick={publishNewsletter}>Publish</button>
+          <button onClick={publishNewsletter}>
+            Publish Selected Newsletter
+          </button>
+          <button onClick={deleteNewsletter}>Delete Selected Newsletter</button>
           <button onClick={adminLogout}>Logout</button>
         </form>
       </div>
@@ -54,14 +57,22 @@ function Admin(props) {
   async function publishNewsletter(e) {
     e.preventDefault();
     const id = selectedNewsletter;
-    console.log(selectedNewsletter)
-    const publish = await MainAPI.publishNewsletter(id)
-    console.log(publish)
-    return publish
+    console.log(selectedNewsletter);
+    const publish = await MainAPI.publishNewsletter(id);
+    console.log(publish);
+    return publish;
+  }
+
+  async function deleteNewsletter(e) {
+    e.preventDefault();
+    const id = selectedNewsletter;
+    const request = await MainAPI.deleteNewsletter(id);
+    console.log(request, id);
+    return request;
   }
 
   function handleNewsletter(e) {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setSelectedNewsletter(e.target.value);
   }
 
@@ -102,17 +113,22 @@ function Admin(props) {
 
   useEffect(() => {
     if (cookie.load("admin_token")) {
+      console.log(cookie.loadAll());
       console.log(cookie.load("admin_token"));
       MainAPI.getNewsletters().then((getNewsletters) => {
         setNewsletters(getNewsletters);
-        setIsDataLoaded(true)
+        setIsDataLoaded(true);
       });
     } else {
       setPage(templates.login);
     }
   }, []);
 
-  return <div className="Admin">{isDataLoaded ? templates.adminPanel : page}</div>;
+  return (
+    <div className="Admin">
+      {isDataLoaded ? templates.adminPanel : templates.login}
+    </div>
+  );
 }
 
 export default Admin;

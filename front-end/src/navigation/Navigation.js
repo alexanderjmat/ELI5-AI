@@ -4,14 +4,9 @@ import { ThemeProvider } from "react-bootstrap";
 
 function Navigation() {
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
       <div className="Navigation">
-        <NavContent />
+        <NavContent/>
       </div>
-    </ThemeProvider>
   );
 }
 

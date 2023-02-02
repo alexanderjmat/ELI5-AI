@@ -1,0 +1,61 @@
+.Subscribe__form-container {
+  width: 100%;
+  margin-top: 2em;
+}
+
+.Subscribe__form {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.Subscribe__form-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+}
+.Subscribe__form-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+}
+
+.Subscribe__form-text {
+  position: absolute;
+  margin-top: 5em;
+  color: white;
+}
+
+.modal-backdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .Subscribe__form {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: -0.5em auto;
+  }
+  .Subscribe__form-input {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 50px;
+    border: none;
+  }
+  .Subscribe__form-button {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: 0.25em;
+  }
+
+  .Subscribe__form-text {
+    position: relative;
+    color: white;
+    margin-top: 0;
+  }
+}

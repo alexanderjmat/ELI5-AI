@@ -2,7 +2,8 @@
 CREATE TABLE subscribers (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
-    subscription_status BOOLEAN NOT NULL DEFAULT true
+    confirmation_code VARCHAR(64) NOT NULL UNIQUE,
+    subscription_status BOOLEAN NOT NULL DEFAULT false
 );
 
 -- newsletter_edition table
@@ -11,6 +12,12 @@ CREATE TABLE newsletter (
     date_published VARCHAR(11),
     was_sent BOOLEAN NOT NULL DEFAULT false
 );
+
+CREATE TABLE overviews (
+    id SERIAL PRIMARY KEY,
+    newsletter_id INTEGER NOT NULL REFERENCES newletter,
+    overview TEXT NOT NULL
+)
 
 -- news_article table
 CREATE TABLE news_articles (

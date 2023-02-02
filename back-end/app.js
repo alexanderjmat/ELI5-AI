@@ -1,11 +1,12 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const adminRoutes = require("./routes/admin_routes");
 const userRoutes = require("./routes/user_routes");
 const { SECRET_KEY } = process.env;
 const session = require("express-session");
+
+const app = express();
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -16,12 +17,15 @@ const corsOptions = {
 
 app.use(express.json());
 app.set("trust proxy", 1);
+app.set("view engine", "js")
 app.use(cookieParser());
 
 app.use(
   session({
     secret: SECRET_KEY,
-    cookie: { maxAge: 100000 },
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
   })
 );
 
@@ -29,5 +33,7 @@ app.use(cors(corsOptions));
 
 app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
+
+
 
 module.exports = app;

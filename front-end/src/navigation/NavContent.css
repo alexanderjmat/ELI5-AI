@@ -2,5 +2,26 @@
     display: flex;
     margin: 0 auto;
     max-width: 1200px;
-    width: 1200px;
-  }
+    text-align: center;
+}
+
+.NavContent h1 {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  width: max-content;
+}
+
+.NavContent__ELI5-AI a:hover {
+  color: blue;
+}
+.NavContent__FAQ a:hover {
+  color: red;
+}
+.NavContent__DONATE a:hover {
+  color: green;
+}
+
+@media only screen and (max-width: 768px) {
+  
+}
+

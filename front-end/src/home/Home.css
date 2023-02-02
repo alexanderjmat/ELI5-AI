@@ -9,6 +9,28 @@
   text-align: center;
 }
 
-.Home hr {
-  color: black;
+.yellow {
+  border: 3px solid yellow;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.Home__Stack-h2 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.Home__footer {
+  display: flex;
+  width: 100vw;
+}
+
+.Home__footer-col--1 {
+  width: 70%;
+}
+
+@media only screen and (max-width: 768px) {
+  .Home {
+    margin: 0 0.25in 0 0.25in;
+  }
 }

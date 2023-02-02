@@ -78,11 +78,33 @@ class MainAPI {
     return request.data.publishNewsLetter;
   }
 
-  //user methods
+  static async deleteNewsletter(id) {
+    const request = await axios.delete(`${BASE_URL}/admin/newsletter/${id}`, {
+      withCredentials: true,
+    })
+    console.log(request)
+    return request.data;
+  }
 
+  //user methods
   static async getLatestNewsletter() {
     const request = await axios.get(`${BASE_URL}/newsletter`);
+    console.log(request)
     return request.data.newsletter;
+  }
+
+  static async subscribe(email) {
+    const request = await axios.post(`${BASE_URL}/subscribe`, {
+      body: {
+        email: email
+      }
+    })
+    return request.data
+  }
+
+  static async confirmSubscription(code) {
+    const request = await axios.get(`${BASE_URL}/confirm-email${code}`)
+    return request.data
   }
 }
 
