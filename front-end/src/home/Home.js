@@ -1,5 +1,5 @@
 import "./Home.css";
-import { ThemeProvider, Col, Stack, Row } from "react-bootstrap";
+import { Col, Stack } from "react-bootstrap";
 import { useContext } from "react";
 import Context from "../Context";
 import Navigation from "../navigation/Navigation";
@@ -9,6 +9,7 @@ import BottomFooter from "./BottomFooter";
 
 function Home() {
   const { home } = useContext(Context)
+  console.log(home)
   const hrStyles = [
     {
       border: "2px solid blue",
@@ -38,20 +39,8 @@ function Home() {
               </h1>
             </Col>
             <Col>
-              <p>
-                Welcome to the very first edition of ELI5-AI, the newsletter
-                that's all about the latest and greatest in the world of
-                Artificial Intelligence!
-              </p>
               <p className="mb-5">
-                This week, we're seeing some major moves in the AI space, with
-                companies revolutionizing the way we think about generative AI,
-                network security, and even game art creation. But here's the
-                really exciting part - this very newsletter is being written by
-                AI! That's right, ELI5-AI is using AI technology to curate and
-                present exciting AI news to you, making sure you're always in
-                the know about the latest advancements. So sit back, relax, and
-                let's dive into the latest AI revolution!
+                {home.currentNewsletter ? home.currentNewsletter.overviews[0].overview : "Loading..."}
               </p>
               <hr className="Home__col-hr yellow my-4" />
             </Col>

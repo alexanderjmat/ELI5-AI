@@ -8,11 +8,8 @@ const Email = require("./email")
 class Client {
   static async getCurrentNewsletter() {
     try {
-      // const newsletter = await db.query(
-      //   "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles, json_agg(overviews.*) as overviews FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id LEFT JOIN overviews ON newsletter.id = overview.newsletter_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
-      // );
       const newsletter = await db.query(
-        "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
+        "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles, json_agg(overviews.*) as overviews FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id LEFT JOIN overviews ON newsletter.id = overviews.newsletter_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
       );
       console.log(newsletter)
       return newsletter.rows[newsletter.rows.length - 1];
