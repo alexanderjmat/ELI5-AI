@@ -24,6 +24,7 @@ function Subscribe(props) {
           <Form>
             <Form.Group className="Subscribe__form">
               <Form.Control
+                required
                 className="Subscribe__form-input"
                 type="email"
                 placeholder="Your email address"

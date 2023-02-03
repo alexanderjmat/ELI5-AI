@@ -26,7 +26,7 @@ function HeaderContent(props) {
   };
 
   return (
-    <div className="HeaderContent">
+    <div data-testid="header-content" className="HeaderContent">
       <Container className="HeaderContent__container">
         <Row>
           <Col className="">

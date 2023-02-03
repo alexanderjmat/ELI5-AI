@@ -12,25 +12,30 @@ function Provider(props) {
     async function getNews() {
       const request = await MainAPI.getLatestNewsletter().then((newsletter) => {
         setCurrentNewsletter(newsletter);
-        console.log(newsletter)
       });
       return request;
     }
     getNews();
   }, []);
 
+  function checkEmail(email) {
+    for (let char of email) {
+      if (char == "@") return true;
+    }
+    return false;
+  }
+
   async function subscribe(e) {
-    console.log(email);
-    const subscribe = await MainAPI.subscribe(email);
-    console.log(subscribe)
-    setSubscriptionResponse(subscribe)
-    console.log(subscriptionResponse)
+    if (checkEmail(email)) {
+      const subscribe = await MainAPI.subscribe(email);
+      setSubscriptionResponse(subscribe)
+    } else {
+      setSubscriptionResponse("Invalid email address")
+    }
   }
   function handleShowModal() {
     setShowModal(true)
   }
-
-
 
   function onChangeEmail(e) {
     setEmail(e.target.value);
@@ -48,7 +53,8 @@ function Provider(props) {
           showModal,
           setShowModal,
           subscriptionResponse,
-          setSubscriptionResponse
+          setSubscriptionResponse,
+          checkEmail
         },
       }}
     >

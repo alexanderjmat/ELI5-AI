@@ -4,12 +4,10 @@ import { useContext } from "react";
 import Context from "../Context";
 import Navigation from "../navigation/Navigation";
 import Header from "./Header";
-import Provider from "../Provider";
 import BottomFooter from "./BottomFooter";
 
 function Home() {
   const { home } = useContext(Context)
-  console.log(home)
   const hrStyles = [
     {
       border: "2px solid blue",
@@ -69,12 +67,14 @@ function Home() {
                     <p className="pb-4">{entry.article}</p>
                     {index % 2 == 0 ? (
                       <hr
-                        style={hrStyles[1]}
+                        data-testid="entry-2"
+                        style={hrStyles[0]}
                         className="Home__Stack-hr w-50 mx-auto"
                       ></hr>
                     ) : (
                       <hr
-                        style={hrStyles[0]}
+                        data-testid="entry-1"
+                        style={hrStyles[1]}
                         className="Home__Stack-hr w-50 mx-auto"
                       ></hr>
                     )}

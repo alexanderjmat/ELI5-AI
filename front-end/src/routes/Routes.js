@@ -8,11 +8,12 @@ import Confirmation from "../content/Confirmation";
 
 function Routes(props) {
   return (
+    <div data-testid="routes">
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Provider>
-            <Home newsletter={props.states.currentNewsletter}/>
+            <Home/>
           </Provider>
         </Route>
         <Route exact path="/admin">
@@ -29,6 +30,7 @@ function Routes(props) {
         </Route>
       </Switch>
     </BrowserRouter>
+    </div>
   );
 }
 

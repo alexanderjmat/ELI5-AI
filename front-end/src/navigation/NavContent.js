@@ -3,7 +3,7 @@ import { ThemeProvider, Container, Row, Col } from "react-bootstrap";
 
 function NavContent() {
   return (
-    <div className="NavContent d-flex justify-content-between align-items-center">
+    <div data-testid="nav-content" className="NavContent d-flex justify-content-between align-items-center">
       <Container>
         <Row>
           <Col>

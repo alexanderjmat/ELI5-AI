@@ -12,11 +12,20 @@
 .About__card {
     display: flex;
     margin: 4em 2em 4em 2em;
-    max-width: 490px;
+    max-width: 25vw;
+}
+
+.About__card-body {
+    height: 100%;
+}
+
+
+.About__card-btn {
+    display: flex;
 }
 
 .About__card-img {
-    height: 36rem;
+    height: 32rem;
     object-fit: cover;
 }
 
@@ -27,8 +36,9 @@
     }
 
     .About__card {
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin: 1em auto;
+        max-width: 100vw;
+        width: 90vw;
     }
   
 }

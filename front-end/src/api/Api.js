@@ -4,9 +4,6 @@ const BASE_URL = "http://localhost:3001";
 
 class MainAPI {
   //admin methods
-  static async removeToken() {
-    cookie.remove("admin_token");
-  }
 
   static async getAdmin() {
     const request = await axios.get(`${BASE_URL}/admin`, {
@@ -45,7 +42,6 @@ class MainAPI {
     const request = await axios.get(`${BASE_URL}/admin/newsletters`, {
       withCredentials: true,
     });
-    console.log(request);
     return request.data.newsletters;
   }
 
@@ -88,9 +84,12 @@ class MainAPI {
 
   //user methods
   static async getLatestNewsletter() {
-    const request = await axios.get(`${BASE_URL}/newsletter`);
-    console.log(request)
-    return request.data.newsletter;
+    try {
+      const request = await axios.get(`${BASE_URL}/newsletter`);
+      return request.data.newsletter;
+    } catch(e) {
+      return e
+    }
   }
 
   static async subscribe(email) {

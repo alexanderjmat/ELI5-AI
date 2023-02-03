@@ -23,3 +23,31 @@
     margin-right: 2em;
     padding-top: 16px;
 }
+
+@media only screen and (max-width: 768px) {
+    .BottomFooter {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: black;
+        color: white;
+        height: 48px;
+        width: 100vw;
+    }
+    .BottomFooter__1 p {
+        font-size: 10px;
+        font-family: serif;
+        margin-top: 16px;
+        margin-left: 1em;
+    
+    }
+    
+    .BottomFooter__2 a {
+        display: inline-block;
+        color: white;
+        font-size: 10px;
+        font-family: serif;
+        margin-right: 2em;
+        padding-top: 16px;
+    }
+  }

@@ -56,8 +56,13 @@ function Admin(props) {
 
   async function publishNewsletter(e) {
     e.preventDefault();
-    const id = selectedNewsletter;
-    console.log(selectedNewsletter);
+    let id;
+    if (newsletters.length == 1) {
+      id = newsletters[0].id
+    } else {
+      id = selectedNewsletter
+    }
+    console.log(id);
     const publish = await MainAPI.publishNewsletter(id);
     console.log(publish);
     return publish;
@@ -65,7 +70,12 @@ function Admin(props) {
 
   async function deleteNewsletter(e) {
     e.preventDefault();
-    const id = selectedNewsletter;
+    let id;
+    if (newsletters.length == 1) {
+      id = newsletters[0].id
+    } else {
+      id = selectedNewsletter
+    }
     const request = await MainAPI.deleteNewsletter(id);
     console.log(request, id);
     return request;

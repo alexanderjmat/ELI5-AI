@@ -6,7 +6,7 @@ CREATE TABLE subscribers (
     subscription_status BOOLEAN NOT NULL DEFAULT false
 );
 
--- newsletter_edition table
+-- newsletter table
 CREATE TABLE newsletter (
     id SERIAL PRIMARY KEY,
     date_published VARCHAR(11),
@@ -15,8 +15,8 @@ CREATE TABLE newsletter (
 
 CREATE TABLE overviews (
     id SERIAL PRIMARY KEY,
-    newsletter_id INTEGER NOT NULL REFERENCES newletter,
-    overview TEXT NOT NULL
+    overview TEXT NOT NULL,
+    newsletter_id INTEGER NOT NULL REFERENCES newsletter
 )
 
 -- news_article table
