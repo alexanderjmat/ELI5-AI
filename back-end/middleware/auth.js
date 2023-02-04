@@ -10,7 +10,6 @@ function authenticate(req, res, next) {
       req.session.save();
       next();
     } else {
-      console.log("incorrect username/password");
       res.status(401).json({
         message: "Invalid username or password",
       });
@@ -32,7 +31,6 @@ function ensureAdmin(req, res, next) {
     switch (cookie || session) {
       case cookie:
         let decodeCookie = jwt.verify(cookie, SECRET_KEY);
-        console.log(decodeCookie)
         if (decodeCookie) {
           next();
         } else {

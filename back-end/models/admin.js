@@ -39,7 +39,6 @@ class Admin {
       );
       return currentEdition.rows;
     } catch (e) {
-      console.log(e);
       return e;
     }
   }
@@ -52,7 +51,6 @@ class Admin {
         "SELECT newsletter.*, json_agg(news_articles.*) as articles FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id WHERE newsletter.date_published=$1 GROUP BY newsletter.id",
         [date]
       );
-      console.log(currentEdition.rows[0])
       const id = currentEdition.rows[0].id;
       const articles = currentEdition.rows[0].articles;
       const generations = articles.map(async (article) => {
@@ -148,7 +146,7 @@ class Admin {
 
   static async getSubscribers() {
     try {
-      const subscribers = await db.query("SELECT * FROM subscribers");
+      const subscribers = await db.query("SELECT email FROM subscribers");
       return subscribers.rows;
     } catch (e) {
       return e;

@@ -15,12 +15,10 @@ class OpenAI {
         temperature: 0.6,
         max_tokens: 350,
       });
-      const cleanedSummary = summary.data.choices[0].text.replace(/[^\w\s\.\?,!'":;]/gi, '');
+      const cleanedSummary = summary.data.choices[0].text.replace(/[^\w\s\.\?,!'":;-—]/gi, '');
       return cleanedSummary;
     } catch (e) {
-      console.error(
-        `Sorry, your summarization was not completed due to the following error: ${e}`
-      );
+      return e
     }
   }
 
@@ -33,12 +31,10 @@ class OpenAI {
         temperature: 0.6,
         max_tokens: 75,
       });
-      const cleanedHeadline = headline.data.choices[0].text.replace(/[^\w\s\.\?,!'";:]/gi, '');
+      const cleanedHeadline = headline.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—]/gi, '');
       return cleanedHeadline;
     } catch (e) {
-      console.error(
-        `Sorry, your headline was not generated due to the following error: ${e}`
-      );
+      return e;
     }
   }
 
@@ -51,12 +47,10 @@ class OpenAI {
         temperature: 0.6,
         max_tokens: 350,
       });
-      const cleanedOverview = overview.data.choices[0].text.replace(/[^\w\s\.\?,!'";:]/gi, '');
+      const cleanedOverview = overview.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—]/gi, '');
       return cleanedOverview;
     } catch (e) {
-      console.error(
-        `Sorry, your overview was not completed due to the following error: ${e}`
-      );
+      return e;
     }
   }
 }

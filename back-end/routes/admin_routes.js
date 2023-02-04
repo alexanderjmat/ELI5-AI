@@ -45,7 +45,6 @@ router.get("/newsletter/:id", ensureAdmin, async (req, res) => {
 router.post("/newsletter", ensureAdminPost, async (req, res) => {
   const newsData = await Admin.fetchNewsData();
   const newsletter = await Admin.generateNewsletter();
-  console.log(newsletter);
   return res.json({
     newsletter: newsletter,
   });
@@ -55,7 +54,6 @@ router.post("/newsletter", ensureAdminPost, async (req, res) => {
 router.delete("/newsletter/:id", ensureAdmin, async (req, res) => {
   const id = req.params.id;
   const deleteNewsletter = await Admin.deleteNewsletter(id);
-  console.log("router:", deleteNewsletter)
   return res.json({
     message: "newsletter deleted",
   });

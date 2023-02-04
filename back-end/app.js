@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path")
 const cookieParser = require("cookie-parser");
 const adminRoutes = require("./routes/admin_routes");
 const userRoutes = require("./routes/user_routes");
@@ -19,6 +20,9 @@ app.use(express.json());
 app.set("trust proxy", 1);
 app.set("view engine", "js")
 app.use(cookieParser());
+app.use(
+  express.static(path.join(__dirname, "../front-end/build"))
+)
 
 app.use(
   session({

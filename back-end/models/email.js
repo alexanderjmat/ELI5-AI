@@ -29,8 +29,6 @@ class Email {
       subject: "ELI5-AI: Confirm Subscription", // Subject link
       html: template, // html body
     });
-
-    console.log(info)
   }
 
   static async unsubscribe(code) {

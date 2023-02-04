@@ -4,8 +4,6 @@ const { getDatabaseUri } = require("./config");
 
 let DB_URI
 
-process.env.NODE_ENV = "test";
-
 if (process.env.NODE_ENV == "test") {
   DB_URI = "postgresql:///eli5_ai_test";
 } else {

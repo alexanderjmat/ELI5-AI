@@ -11,7 +11,6 @@ class Client {
       const newsletter = await db.query(
         "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles, json_agg(overviews.*) as overviews FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id LEFT JOIN overviews ON newsletter.id = overviews.newsletter_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
       );
-      console.log(newsletter)
       return newsletter.rows[newsletter.rows.length - 1];
     } catch (e) {
       return e;
@@ -33,18 +32,14 @@ class Client {
     try {
       const code = crypto.randomBytes(64).toString('hex').slice(0, 64)
       const query = await db.query("SELECT * FROM subscribers WHERE email = $1", [email]);
-      console.log(email, code)
       if (query.rows[0] && query.rows[0].subscription_status == true) {
-        console.log(query.rows[0])
         return false
       } else if (query.rows[0] && query.rows[0].subscription_status == false) {
         const sendConfirmationEmail = await Email.sendConfirmationEmail(email, query.rows[0].confirmation_code) 
-        console.log(sendConfirmationEmail)
         return true
       } else {
         const subscribe = await db.query("INSERT INTO subscribers (email, confirmation_code) VALUES ($1, $2)", [email, code])
         const sendConfirmationEmail = await Email.sendConfirmationEmail(email, code)
-        console.log(sendConfirmationEmail)
         return true
       }
     } catch(e) {
@@ -55,8 +50,6 @@ class Client {
   static async confirmSubscription(code) {
     try {
       const request = await db.query("SELECT * FROM subscribers WHERE confirmation_code=$1", [code])
-      console.log(code)
-      console.log(request.rows[0])
       if (request.rows[0] && request.rows[0].subscription_status == false) {
         const email = request.rows[0].email;
         const updateSubscriber = await db.query("UPDATE subscribers SET subscription_status = true WHERE email=$1", [email])

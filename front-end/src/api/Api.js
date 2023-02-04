@@ -82,6 +82,13 @@ class MainAPI {
     return request.data;
   }
 
+  static async getSubscribers() {
+    const request = await axios.get(`${BASE_URL}/admin/subscribers`, {
+      withCredentials: true,
+    })
+    return request.data
+  }
+
   //user methods
   static async getLatestNewsletter() {
     try {
