@@ -11,8 +11,8 @@
     "proxy": "http://localhost:3001",
     "scripts": {
     "heroku-postbuild": "npm install --force",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cd front-end && react-scripts start",
+    "build": "cd front-end && react-scripts build",
     "test": "react-scripts test || NODE_ENV=test",
     "eject": "react-scripts eject"
     },
