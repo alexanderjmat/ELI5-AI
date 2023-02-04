@@ -89,8 +89,6 @@
     },
     "devDependencies": {
     "@babel/core": "^7.15.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "12.x",
-    "@testing-library/user-event": "12.x",
+    "@testing-library/react": "12.1",
     }
 }
