@@ -2,9 +2,9 @@
     "name": "eli5-ai",
     "version": "1.0.0",
     "engines": {
-        "node": "16.x"
+        "node": "16.x",
         "npm": "8.x"
-    }
+    },
     "description": "A free and easy-to-read newsletter about ongoing developments in AI and Machine Learning",
     "main": "index.js",
     "private": true,
