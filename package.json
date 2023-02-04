@@ -80,9 +80,5 @@
     "last 1 firefox version",
     "last 1 safari version"
     ]
-    },
-    "devDependencies": {
-    "@babel/core": "^7.15.2",
-    "@testing-library/react": "^12.1.5",
     }
 }
