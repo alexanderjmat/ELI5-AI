@@ -55,7 +55,7 @@
     "react": "^16.x",
     "react-bootstrap": "^2.7.0",
     "react-cookies": "^0.1.1",
-    "react-dom": "^18.2.0",
+    "react-dom": "16.x",
     "react-router-dom": "^5.2.1",
     "react-scripts": "5.0.1",
     "react-typist": "^2.0.5",
