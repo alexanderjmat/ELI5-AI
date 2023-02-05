@@ -34,13 +34,12 @@ app.use(
 );
 
 app.use(cors(corsOptions));
+app.use("/", userRoutes);
+app.use("/admin", adminRoutes);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../front-end/build', 'index.html'));
 });
-
-app.use("/", userRoutes);
-app.use("/admin", adminRoutes);
 
 
 
