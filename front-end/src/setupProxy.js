@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/',
     createProxyMiddleware({
-      target: 'https://eli5-ai.herokuapp.com/',
+      target: 'http://localhost:3001',
       changeOrigin: true,
     })
   );
