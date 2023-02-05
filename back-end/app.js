@@ -10,7 +10,7 @@ const session = require("express-session");
 const app = express();
 
 const corsOptions = {
-  origin: "https://eli5-ai.herokuapp.com/",
+  origin: "http://localhost:3000/",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
   credentials: true,
