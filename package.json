@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "test": "NODE_ENV=test",
-        "server": "npm server --prefix ./back-end",
+        "server": "npm run server --prefix ./back-end",
         "client": "npm start --prefix ./front-end",
         "start": "concurrently \"npm run server\" \"npm run client\""
     },
