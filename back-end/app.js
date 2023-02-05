@@ -35,6 +35,10 @@ app.use(
 
 app.use(cors(corsOptions));
 
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../front-end/build', 'index.html'));
+});
+
 app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
 
