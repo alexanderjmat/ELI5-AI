@@ -10,17 +10,14 @@
     "private": true,
     "scripts": {
     "heroku-postbuild": "npm install --force",
-    "start": "cd front-end && react-scripts start",
-    "build": "cd front-end && react-scripts build",
     "server": "cd back-end && nodemon server",
+    "start": "cd front-end && npm start",
     "test": "react-scripts test || NODE_ENV=test",
     "eject": "react-scripts eject"
     },
     "author": "AJ Matula",
     "license": "ISC",
     "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.80",
-    "@mailchimp/mailchimp_transactional": "^1.0.50",
     "@sendgrid/mail": "^7.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
