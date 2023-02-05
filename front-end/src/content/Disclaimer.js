@@ -1,5 +1,4 @@
 import "./Disclaimer.css";
-import { Modal } from "react-bootstrap";
 import Navigation from "../navigation/Navigation";
 import Header from "../home/Header";
 import BottomFooter from "../home/BottomFooter";

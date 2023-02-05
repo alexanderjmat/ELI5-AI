@@ -1,5 +1,5 @@
 import "./NavContent.css";
-import { ThemeProvider, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function NavContent() {
   return (

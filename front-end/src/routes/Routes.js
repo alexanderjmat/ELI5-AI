@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "../home/Home";
 import Admin from "../home/Admin";
 import Provider from "../Provider";
