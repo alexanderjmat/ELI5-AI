@@ -1,6 +1,6 @@
 import axios from "axios";
 import cookie from "react-cookies";
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = window.location.origin;
 
 class MainAPI {
   //admin methods
