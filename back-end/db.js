@@ -7,7 +7,7 @@ let DB_URI
 if (process.env.NODE_ENV == "test") {
   DB_URI = "postgresql:///eli5_ai_test";
 } else {
-  DB_URI = "postgresql:///eli5_ai"
+  DB_URI = process.env.HEROKU_POSTGRESQL_OLIVE_URL;
 }
 
 let db = new Client({
