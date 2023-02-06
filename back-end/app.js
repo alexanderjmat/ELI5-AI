@@ -6,6 +6,8 @@ const adminRoutes = require("./routes/admin_routes");
 const userRoutes = require("./routes/user_routes");
 const { SECRET_KEY } = process.env;
 const session = require("express-session");
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 
 const app = express();
 
@@ -20,6 +22,13 @@ app.use(express.json());
 app.set("trust proxy", 1);
 app.set("view engine", "js")
 app.use(cookieParser());
+app.use(
+  '/',
+  createProxyMiddleware({
+    target: 'http://localhost:3000',
+    changeOrigin: true,
+  })
+);
 app.use(
   express.static(path.join(__dirname, "../front-end/build"))
 )

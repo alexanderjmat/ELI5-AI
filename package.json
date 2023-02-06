@@ -7,7 +7,8 @@
         "test": "NODE_ENV=test",
         "server": "npm run server --prefix ./back-end",
         "client": "npm start --prefix ./front-end",
-        "start": "concurrently \"npm run server\" \"npm run client\""
+        "start": "npm run client",
+        "heroku-postbuild": "npm run server"
     },
     "author": "AJ Matula",
     "license": "ISC",
