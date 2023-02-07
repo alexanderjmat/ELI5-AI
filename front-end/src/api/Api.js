@@ -1,6 +1,6 @@
 import axios from "axios";
 import cookie from "react-cookies";
-const BASE_URL = window.location.origin;
+const BASE_URL = "https://eli5-ai-backend.herokuapp.com";
 
 class MainAPI {
   //admin methods
@@ -8,6 +8,9 @@ class MainAPI {
   static async getAdmin() {
     const request = await axios.get(`${BASE_URL}/admin`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     });
     console.log(request);
     return request;
@@ -31,6 +34,9 @@ class MainAPI {
   static async adminLogout() {
     const request = await axios.get(`${BASE_URL}/admin/logout`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     });
     if (request.status == 200) {
       cookie.remove("admin_token");
@@ -41,6 +47,9 @@ class MainAPI {
   static async getNewsletters() {
     const request = await axios.get(`${BASE_URL}/admin/newsletters`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     });
     return request.data.newsletters;
   }
@@ -48,6 +57,9 @@ class MainAPI {
   static async getNewsletter(id) {
     const request = await axios.get(`${BASE_URL}/admin/newsletter/${id}`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     });
     console.log(request);
     return request.data.newsletter;
@@ -56,9 +68,7 @@ class MainAPI {
   static async createNewsletter() {
     const request = await axios.post(`${BASE_URL}/admin/newsletter`, {
       withCredentials: true,
-      headers: {
-        Cookie: `${cookie.load("admin_token")}`,
-      },
+      "Authorization": `${cookie.load("admin_token")}`
     });
     console.log(request);
     return request;
@@ -67,9 +77,7 @@ class MainAPI {
   static async publishNewsletter(id) {
     const request = await axios.patch(`${BASE_URL}/admin/newsletter/${id}`, {
       withCredentials: true,
-      headers: {
-        Cookie: `${cookie.load("admin_token")}`,
-      },
+      "Authorization": `${cookie.load("admin_token")}`,
     });
     return request.data.publishNewsLetter;
   }
@@ -77,6 +85,9 @@ class MainAPI {
   static async deleteNewsletter(id) {
     const request = await axios.delete(`${BASE_URL}/admin/newsletter/${id}`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     })
     console.log(request)
     return request.data;
@@ -85,6 +96,9 @@ class MainAPI {
   static async getSubscribers() {
     const request = await axios.get(`${BASE_URL}/admin/subscribers`, {
       withCredentials: true,
+      headers: {
+        "Authorization": cookie.load("admin_token")
+      }
     })
     return request.data
   }
@@ -101,9 +115,7 @@ class MainAPI {
 
   static async subscribe(email) {
     const request = await axios.post(`${BASE_URL}/subscribe`, {
-      body: {
-        email: email
-      }
+      email: email
     })
     return request.data
   }

@@ -35,7 +35,7 @@ class Client {
       if (query.rows[0] && query.rows[0].subscription_status == true) {
         return false
       } else if (query.rows[0] && query.rows[0].subscription_status == false) {
-        const sendConfirmationEmail = await Email.sendConfirmationEmail(email, query.rows[0].confirmation_code) 
+        const sendConfirmationEmail = await Email.sendConfirmationEmail(email, query.rows[0].confirmation_code)
         return true
       } else {
         const subscribe = await db.query("INSERT INTO subscribers (email, confirmation_code) VALUES ($1, $2)", [email, code])

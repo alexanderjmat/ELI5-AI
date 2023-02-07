@@ -6,6 +6,7 @@ const Email = require("../models/email");
 class Admin {
   static async fetchNewsData() {
     try {
+      const pastDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
       const date = new Date().toISOString().slice(0, 10);
       const createNewsletter = await db.query(
         "INSERT INTO newsletter (date_published) VALUES ($1) RETURNING id, date_published",
@@ -13,7 +14,7 @@ class Admin {
       );
       const newsletterId = createNewsletter.rows[0].id;
       const response = await axios.get(
-        `http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_API_KEY}&keywords=AI&categories=technology,science,business,entertainment&languages=en&sort=published_desc&limit=10`
+        `http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_API_KEY}&keywords=AI%20ChatGPT&categories=technology,science,business,entertainment&languages=en&date=${pastDate},${date}&sort=popularity&limit=10`
       );
       const rawData = response.data.data;
 

@@ -21,11 +21,12 @@ function authenticate(req, res, next) {
 
 function ensureAdmin(req, res, next) {
   try {
-    const cookie = req.cookies.admin_token;
+    const cookie = req.headers.authorization;
     const session = req.session.admin_token;
+    
     if (!cookie && !session) {
       res.status(401).json({
-        message: "unauthorized",
+        message: "unauthorized"
       });
     }
     switch (cookie || session) {
@@ -55,7 +56,7 @@ function ensureAdmin(req, res, next) {
 }
 
 function ensureAdminPost(req, res, next) {
-  const cookie = req.body.headers.Cookie 
+  const cookie = req.body.Authorization 
   if (cookie) {
     let decodeCookie = jwt.verify(cookie, SECRET_KEY)
     if (decodeCookie) {
@@ -74,7 +75,7 @@ function ensureAdminPost(req, res, next) {
 
 function logout(req, res, next) {
   try {
-    const cookie = req.cookies.admin_token;
+    const cookie = req.headers.authorization;
     const session = req.session.admin_token;
     if (!cookie && !session) {
       res.status(401).json({

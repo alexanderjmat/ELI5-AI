@@ -28,6 +28,7 @@ function Provider(props) {
   async function subscribe(e) {
     if (checkEmail(email)) {
       const subscribe = await MainAPI.subscribe(email);
+      console.log("client subscribe:", subscribe)
       setSubscriptionResponse(subscribe)
     } else {
       setSubscriptionResponse("Invalid email address")

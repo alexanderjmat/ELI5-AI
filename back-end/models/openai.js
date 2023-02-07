@@ -10,13 +10,13 @@ class OpenAI {
     try {
       const summary = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Create an approximately 150 word summary of the article linked below. Include the most relevant information from the article, and be sure to write the summary in a style that is digestible and easy to read for a mainstream audience. Use friendly, exciting, informative, and inclusive language. Make sure that there are no spelling or grammar mistakes in the summary.
+        prompt: `Create an approximately 150 word summary of the article linked below. Include the most relevant information from the article, and be sure to write the summary in a style that is digestible and easy to read for a mainstream audience. Use friendly, exciting, informative, and inclusive language. Make sure that there are no spelling or grammar mistakes in the summary. For example, make sure that the first character of each sentence is capitalized.
                          Link to article: ${link}`,
         temperature: 0.6,
         max_tokens: 350,
       });
-      const cleanedSummary = summary.data.choices[0].text.replace(/[^\w\s\.\?,!'":;-—]/gi, '');
-      return cleanedSummary;
+      const cleanedSummary = summary.data.choices[0].text.replace(/[^\w\s\.\?,!'":;-—$%&]/gi, '');
+      return summary.data.choices[0].text;
     } catch (e) {
       return e
     }
@@ -31,8 +31,8 @@ class OpenAI {
         temperature: 0.6,
         max_tokens: 75,
       });
-      const cleanedHeadline = headline.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—]/gi, '');
-      return cleanedHeadline;
+      const cleanedHeadline = headline.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—$%&]/gi, '');
+      return headline.data.choices[0].text;
     } catch (e) {
       return e;
     }
@@ -47,8 +47,8 @@ class OpenAI {
         temperature: 0.6,
         max_tokens: 350,
       });
-      const cleanedOverview = overview.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—]/gi, '');
-      return cleanedOverview;
+      const cleanedOverview = overview.data.choices[0].text.replace(/[^\w\s\.\?,!'";:-—$%&]/gi, '');
+      return overview.data.choices[0].text;
     } catch (e) {
       return e;
     }

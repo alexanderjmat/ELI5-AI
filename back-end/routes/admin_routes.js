@@ -70,22 +70,6 @@ router.patch("/newsletter/:id", ensureAdminPost, async (req, res) => {
 
 //Email routes
 
-//Create account
-router.get("/send_mail", async (req, res) => {
-  const sendEmail = await Email.sendEmail();
-  res.json({
-    sendEmail
-  })
-})
-
-//Send email
-router.post("/email", ensureAdmin, async (req, res) => {
-  const sendEmail = await Email.testEmail();
-  res.json({
-    sendEmail,
-  });
-});
-
 //Get list of subscribers
 router.get("/subscribers", ensureAdmin, async (req, res) => {
   const subscribers = await Admin.getSubscribers();

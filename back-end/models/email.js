@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const db = require("../db")
-const URL = "http://localhost:3000"
+const URL = "https://eli5-ai.com/"
 
 class Email {
   static async sendConfirmationEmail(email, code) {
@@ -8,14 +8,14 @@ class Email {
       service: "gmail",
       auth: {
         user: "ELI5.AI.News@gmail.com",
-        pass: process.env.EMAIL_PASSWORD,
+        pass: process.env.MAIL_PASSWORD,
       },
     });
 
     let template = (
       `<div style={{"display": "flex", "flexDirection": "column"}}>
         <h1>Confirm your subscription to ELI5-AI below!</h1>
-        <a href="${URL}/confirm-email?code=${code}"><button>Subscribe</button></a>
+        <a href="${URL}confirm-email?code=${code}"><button>Subscribe</button></a>
         <p>
           If you did not sign up to receive email from ELI5-AI, you can just
           ignore this message.
@@ -29,6 +29,8 @@ class Email {
       subject: "ELI5-AI: Confirm Subscription", // Subject link
       html: template, // html body
     });
+
+    console.log("send confirmation EMAIL:", info)
   }
 
   static async unsubscribe(code) {

@@ -9,26 +9,16 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/newsletters", async (req, res) => {
-  const newsletters = await Client.getNewsletters();
-  return res.json({
-    newsletters: newsletters,
-  });
-});
-
 router.get("/newsletter", async (req, res) => {
   const newsletter = await Client.getCurrentNewsletter();
   return res.json({ newsletter });
 });
 
 router.post("/subscribe", async (req, res) => {
-  const email = req.body.body.email
+  const email = req.body.email
   const subscribe = await Client.subscribe(email)
-  if (subscribe) {
-    res.send("Thanks for subscribing! We just send you a confirmation email.")
-  } else {
-    res.send("You are already subscribed")
-  }
+  res.send("Thanks for subscribing! If you are not already subscribed, we've sent you a confirmation email.")
+
 })
 
 router.get("/confirm-email", async (req, res) => {

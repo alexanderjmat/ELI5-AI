@@ -12,7 +12,6 @@ function Confirmation() {
     useEffect(() => {
         async function confirmSubscription() {
             const request = await MainAPI.confirmSubscription(search);
-            console.log(request)
             setData(request)
             return request
         }

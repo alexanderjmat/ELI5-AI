@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fc5b7d01.css",
+    "main.js": "/static/js/main.76adfe6a.js",
+    "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
+    "static/media/eli5-ai.svg": "/static/media/eli5-ai.822e2f53d1dfa8415fe24adb380f9155.svg",
+    "static/media/donate.svg": "/static/media/donate.bc28776b733c610fd4b5c99437cdc4e5.svg",
+    "index.html": "/index.html",
+    "main.fc5b7d01.css.map": "/static/css/main.fc5b7d01.css.map",
+    "main.76adfe6a.js.map": "/static/js/main.76adfe6a.js.map",
+    "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc5b7d01.css",
+    "static/js/main.76adfe6a.js"
+  ]
+}

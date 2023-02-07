@@ -17,7 +17,7 @@ CREATE TABLE overviews (
     id SERIAL PRIMARY KEY,
     overview TEXT NOT NULL,
     newsletter_id INTEGER NOT NULL REFERENCES newsletter
-)
+);
 
 -- news_article table
 CREATE TABLE news_articles (

@@ -15,7 +15,7 @@ function Disclaimer() {
           intelligence and the opinions expressed in the articles do not
           necessarily reflect the views of the owner of ELI5-AI. The owner of
           ELI5-AI does not endorse or take responsibility for any of the
-          information contained in the newsletter. If you have any questions or concerns, feel free to <a href="mailto: eli5.ai.news@gmail.com">reach out over email.</a>
+          information contained in the newsletter. If you have any questions or concerns, feel free to<a href="mailto:eli5.ai.news@gmail.com"> reach out over email.</a>
         </p>
       </div>
 
