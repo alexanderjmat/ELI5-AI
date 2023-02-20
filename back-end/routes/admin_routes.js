@@ -68,8 +68,6 @@ router.patch("/newsletter/:id", ensureAdminPost, async (req, res) => {
   });
 });
 
-//Email routes
-
 //Get list of subscribers
 router.get("/subscribers", ensureAdmin, async (req, res) => {
   const subscribers = await Admin.getSubscribers();

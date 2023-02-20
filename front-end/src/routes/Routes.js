@@ -6,7 +6,7 @@ import About from "../about/About";
 import Disclaimer from "../content/Disclaimer";
 import Confirmation from "../content/Confirmation";
 
-function Routes(props) {
+function Routes() {
   return (
     <div data-testid="routes">
     <BrowserRouter>
