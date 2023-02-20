@@ -64,3 +64,5 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+/routes/admin_routes.test.js
