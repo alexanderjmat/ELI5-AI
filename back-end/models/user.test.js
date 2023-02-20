@@ -39,7 +39,7 @@ describe("Client", () => {
         was_sent: true,
       });
       expect(mockQuery).toHaveBeenCalledWith(
-        "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
+        "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles, json_agg(overviews.*) as overviews FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id LEFT JOIN overviews ON newsletter.id = overviews.newsletter_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
       );
     });
 
@@ -50,28 +50,6 @@ describe("Client", () => {
 
       const result = await Client.getCurrentNewsletter();
       expect(result).toEqual(new Error("Query failed"));
-    });
-  });
-
-  describe("getNewsletters()", () => {
-    it("should return all newsletters from the database", async () => {
-      // mock the db.query function to return a predetermined result
-      const mockQuery = jest.fn().mockResolvedValue({
-        rows: [
-          { id: 1, title: "Newsletter 1" },
-          { id: 2, title: "Newsletter 2" },
-        ],
-      });
-      db.query = mockQuery;
-
-      const result = await Client.getNewsletters();
-      expect(result).toEqual([
-        { id: 1, title: "Newsletter 1" },
-        { id: 2, title: "Newsletter 2" },
-      ]);
-      expect(mockQuery).toHaveBeenCalledWith(
-        "SELECT newsletter.*, json_agg(newsletter_entries.*) as entries, json_agg(news_articles.*) as articles FROM newsletter LEFT JOIN news_articles ON newsletter.id = news_articles.newsletter_id LEFT JOIN newsletter_entries ON news_articles.id = newsletter_entries.news_articles_id WHERE newsletter.was_sent = true GROUP BY newsletter.id"
-      );
     });
   });
 });

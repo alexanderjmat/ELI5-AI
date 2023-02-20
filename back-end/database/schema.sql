@@ -25,15 +25,15 @@ CREATE TABLE news_articles (
     title VARCHAR(255) NOT NULL,
     url VARCHAR(255) UNIQUE NOT NULL,
     date_published VARCHAR(11) NOT NULL,
-    newsletter_id INTEGER NOT NULL REFERENCES newsletter,
+    newsletter_id INTEGER NOT NULL REFERENCES newsletter ON DELETE CASCADE,
     was_sent BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- Create newsletter_entries table
 CREATE TABLE newsletter_entries (
     id SERIAL PRIMARY KEY,
-    news_articles_id INTEGER NOT NULL REFERENCES news_articles,
-    newsletter_id INTEGER NOT NULL REFERENCES newsletter,
+    news_articles_id INTEGER NOT NULL REFERENCES news_articles ON DELETE CASCADE,
+    newsletter_id INTEGER NOT NULL REFERENCES newsletter ON DELETE CASCADE,
     title TEXT NOT NULL, 
     article TEXT NOT NULL,
     url VARCHAR(255) NOT NULL,

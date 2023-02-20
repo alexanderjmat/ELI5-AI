@@ -13,9 +13,9 @@ describe("Admin", () => {
   });
 
   afterEach(async () => {
-    await db.query(`DELETE FROM newsletter WHERE date_published='03-12-2023'`);
     await db.query(`DELETE FROM news_articles WHERE title='Test Article'`);
     await db.query(`DELETE FROM newsletter_entries where title='Test Entry for Test Article'`);
+    await db.query(`DELETE FROM newsletter WHERE date_published='03-12-2023'`);
   });
 
   describe("getNewsletters()", () => {

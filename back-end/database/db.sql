@@ -1,9 +1,12 @@
-CREATE DATABASE eli5_ai IF NOT EXISTS;
+DROP DATABASE eli5_ai;
 
-\connect eli5_ai
-\i schema.sql
+CREATE DATABASE eli5_ai;
 
+\connect eli5_ai;
+\i schema.sql;
+
+DROP DATABASE eli5_ai_test;
 CREATE DATABASE eli5_ai_test;
 
-\connect eli5_ai_test
-\i schema.sql
+\connect eli5_ai_test;
+\i schema.sql;

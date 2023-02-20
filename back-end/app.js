@@ -10,7 +10,7 @@ const session = require("express-session");
 const app = express();
 
 const corsOptions = {
-  origin: ["https://eli5-ai.netlify.app", "https://eli5-ai.com"],
+  origin: ["http://localhost:3000", "https://eli5-ai.netlify.app", "https://eli5-ai.com"],
   methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
   credentials: true,
