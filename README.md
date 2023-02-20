@@ -185,7 +185,7 @@ was_sent: A boolean field that indicates whether the entry was published. By def
 5. The user can also visit the ELI5-AI website at any time to view the current newsletter. 
 6. If the user no longer wishes to receive the newsletter, they can simply click the unsubscribe link in the periodic newsletter email.
 
-# Tests 
+# Tests *
 
 ## Frontend
 
@@ -194,4 +194,6 @@ was_sent: A boolean field that indicates whether the entry was published. By def
 ## Backend
 
 `npm test`
+
+*Note: Most of these tests will not pass for non-superuser testers.
 
